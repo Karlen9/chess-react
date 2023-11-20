@@ -32,10 +32,31 @@
   position: relative;
 }
 
+.cell.pawn img {
+  width: 36px;
+  height: 36px;
+}
+
 .black {
-  background-color: #76e4f7;
+  background-color: #fc8181;
+
 }
 
 .white {
-  background-color: #fc8181;
+  background-color: #76e4f7;
+}
+
+.selected {
+  background-color: #4FD1C5;
+}
+
+.available {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: #4FD1C5;
+}
+
+.under-attack {
+  background-color: #4FD1C5;
 }
