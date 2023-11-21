@@ -1,7 +1,7 @@
 import { Cell } from "../Cell";
 import { Figure, FigureNames } from "./Figure";
-import blackLogo from "../../assets/black-knight.png";
-import whiteLogo from "../../assets/white-knight.png";
+import blackLogo from "../../assets/black-knight.svg";
+import whiteLogo from "../../assets/white-knight.svg";
 import { Colors } from "../Colors";
 
 export class Knight extends Figure {

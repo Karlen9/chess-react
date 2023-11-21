@@ -33,17 +33,17 @@
 }
 
 .cell.pawn img {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
 }
 
 .black {
-  background-color: #fc8181;
+  background-color: #706233;
 
 }
 
 .white {
-  background-color: #76e4f7;
+  background-color: #F0DBAF;
 }
 
 .selected {
