@@ -12,10 +12,7 @@ interface CellProps {
 
 const CellComponent =({ color, cell, selected, onClick }: CellProps) => {
   const isUnderAttack = cell.available && cell.figure;
-
-  useEffect(() => {
-    console.log([cell.x, cell.y])
-  }, [cell])
+  
   return (
     <div
       onClick={() => onClick(cell)}

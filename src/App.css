@@ -32,11 +32,6 @@
   position: relative;
 }
 
-.cell.pawn img {
-  width: 40px;
-  height: 40px;
-}
-
 .black {
   background-color: #706233;
 
@@ -59,4 +54,25 @@
 
 .under-attack {
   background-color: #4FD1C5;
+}
+
+.lost-figures {
+  display: flex;
+  width: auto;
+  padding: 10px;
+  background-color: #CBD5E0;
+  min-height: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 3px;
+}
+
+.lost-figure {
+  width: 30px;
+  height: 30px;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
 }
