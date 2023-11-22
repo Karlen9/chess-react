@@ -32,7 +32,7 @@ export class Cell {
   }
 
   isEnemy(target: Cell): boolean {
-    if (this.figure?.color !== target.figure?.color) {
+    if (!target.isEmpty() && this.figure?.color !== target.figure?.color) {
       return true;
     }
     return false;

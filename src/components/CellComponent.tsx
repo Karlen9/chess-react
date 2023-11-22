@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, memo, useEffect, useMemo } from "react";
 import { Colors } from "../models/Colors";
 import { Cell } from "../models/Cell";
 import { FigureNames } from "../models/figures/Figure";
@@ -10,8 +10,12 @@ interface CellProps {
   onClick: (cell: Cell) => void;
 }
 
-const CellComponent: FC<CellProps> = ({ color, cell, selected, onClick }) => {
+const CellComponent =({ color, cell, selected, onClick }: CellProps) => {
   const isUnderAttack = cell.available && cell.figure;
+
+  useEffect(() => {
+    console.log([cell.x, cell.y])
+  }, [cell])
   return (
     <div
       onClick={() => onClick(cell)}
@@ -23,6 +27,6 @@ const CellComponent: FC<CellProps> = ({ color, cell, selected, onClick }) => {
       {cell.figure?.logo && <img src={cell.figure.logo} />}
     </div>
   );
-};
+}
 
-export default CellComponent;
+export default memo(CellComponent);

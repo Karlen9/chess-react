@@ -83,6 +83,14 @@ export class Board {
     }
   }
 
+  // public isAnyCellSelected(selectedCell: Cell | null): boolean {
+  //   if(selectedCell) {
+  //     return true;
+  //   }
+
+  //   return false
+  // }
+
   public getBoardCopy(): Board {
     const newBoard = new Board();
     newBoard.cells = this.cells;

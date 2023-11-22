@@ -2,22 +2,31 @@ import React, { FC, useEffect, useState } from "react";
 import CellComponent from "./CellComponent";
 import { Board } from "../models/Board";
 import { Cell } from '../models/Cell';
+import { Player } from "../models/Player";
 
 interface BoardProps {
   board: Board;
   setBoard: (board: Board) => void;
+  restart: () => void;
+  currentPlayer: Player | null;
+  swapPlayers: () => void;
 }
 
-const BoardComponent: FC<BoardProps> = ({ board, setBoard }) => {
-
+const BoardComponent: FC<BoardProps> = (props) => {
+  const {board, setBoard, restart, currentPlayer, swapPlayers} = props;
   const [selectedCell, setSelectedCell] = useState<Cell | null>(null)
 
-  const selectCell = (cell: Cell) => {
+  const onSelect = (cell: Cell) => {
+    if(!selectedCell && cell.isEmpty() || selectedCell?.isEmpty() && cell.isEmpty()) return 
+    if(!cell.available && !cell.figure) return
     if(selectedCell && selectedCell !== cell && selectedCell.figure?.canMove(cell)) {
       selectedCell.moveFigure(cell)
+      swapPlayers()
       setSelectedCell(null)
     } else {
-      setSelectedCell(cell)
+      if(cell.figure?.color === currentPlayer?.color) {
+        setSelectedCell(cell)
+      }
     }
   }
 
@@ -40,10 +49,11 @@ const BoardComponent: FC<BoardProps> = ({ board, setBoard }) => {
       {board.cells.map((row, index) => (
         <React.Fragment key={index}>
           {row.map((cell) => (
-            <CellComponent cell={cell} color={cell.color} onClick={selectCell} selected={cell.x === selectedCell?.x && cell.y === selectedCell?.y} />
+            <CellComponent cell={cell} color={cell.color} onClick={onSelect} selected={cell.x === selectedCell?.x && cell.y === selectedCell?.y} />
           ))}
         </React.Fragment>
       ))}
+      <button onClick={restart}>Restart</button>
     </div>
   );
 };
